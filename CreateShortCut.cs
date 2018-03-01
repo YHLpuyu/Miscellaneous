@@ -1,3 +1,4 @@
+using IWshRuntimeLibrary;//Add Referance IWshRuntimeLibrary
 /// <summary>
 /// 创建文件的快捷方式
 /// </summary>
