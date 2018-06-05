@@ -12,3 +12,39 @@ void DrawRectangleBuffer(int x, int y)
     newG.DrawRectangle(new Pen(new SolidBrush(Color.White),3), rect);
     bufg.Render(g);
 }
+
+public class Vector
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Length
+        {
+            get
+            {
+                return Math.Sqrt(X * X + Y * Y);
+            }
+        }
+
+        public static double operator * (Vector v1,Vector v2)
+        {
+            return v1.X * v2.Y - v1.Y * v2.X;
+        }
+
+        public Vector(double x,double y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public double Angle(Vector v)
+        {
+            double pot = X * v.X + Y * v.Y;
+            double theta = Math.Acos(pot / (Length * v.Length));
+            double cross = this * v;
+            if(cross<0)
+            {
+                theta = 2 * Math.PI - theta;
+            }
+            return theta*180/Math.PI;
+        }
+    }
